@@ -349,5 +349,5 @@ def main():
 if __name__ == "__main__":
     main()
 """
-Wfuzz Security Testing and Defense Demonstration Suite
+Wfuzz Security Testing and Defense Demonstration Suite.
 """
