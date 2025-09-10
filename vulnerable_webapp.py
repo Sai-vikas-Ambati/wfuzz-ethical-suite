@@ -14,7 +14,7 @@ import sqlite3
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.secret_key = 'vulnerable_secret_key'  # Intentionally weak
+app.secret_key = 'vulnerable_secret_key'  # Intentionally weak.
 
 # Configure logging for attack detection with all logs in one file
 logging.basicConfig(
