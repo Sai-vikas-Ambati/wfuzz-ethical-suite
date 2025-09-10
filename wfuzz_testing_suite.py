@@ -347,6 +347,7 @@ def main():
     print("- Defense in depth is essential for security")
 
 if __name__ == "__main__":
-    main()"""
+    main()
+"""
 Wfuzz Security Testing and Defense Demonstration Suite
 """
