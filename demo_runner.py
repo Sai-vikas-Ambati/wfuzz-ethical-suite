@@ -35,7 +35,7 @@ class SecurityDemoOrchestrator:
                 stderr=subprocess.PIPE
             )
             
-            # Wait for webapp to start
+            # Wait for webapp to start.
             time.sleep(5)
             
             # Test if webapp is running
