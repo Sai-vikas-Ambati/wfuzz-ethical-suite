@@ -260,7 +260,7 @@ class DefensiveAnalyzer:
             "   - Implement strong password policies",
             "   - Use multi-factor authentication",
             "   - Implement account lockout after failed attempts",
-            "   - Use secure session management",
+            "   - Use secure session managements",
             "",
             "3. RATE LIMITING:",
             "   - Implement rate limiting on sensitive endpoints",
