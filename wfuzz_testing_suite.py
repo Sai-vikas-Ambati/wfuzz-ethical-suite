@@ -263,7 +263,7 @@ class DefensiveAnalyzer:
             "   - Use secure session managements",
             "",
             "3. RATE LIMITING:",
-            "   - Implement rate limiting on sensitive endpoints",
+            "   - Implement rate limiting on sensitive endpoint",
             "   - Use progressive delays for repeated failures",
             "   - Consider IP-based blocking for persistent attackers",
             "",
