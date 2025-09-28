@@ -255,32 +255,8 @@ class DefensiveAnalyzer:
             "   - Implement strict input validation for all user inputs",
             "   - Use parameterized queries to prevent SQL injection",
             "   - Sanitize output to prevent XSS attacks",
-            "",
-            "2. AUTHENTICATION & AUTHORIZATION:",
-            "   - Implement strong password policies",
-            "   - Use multi-factor authentication",
-            "   - Implement account lockout after failed attempts",
-            "   - Use secure session managements",
-            "",
-            "3. RATE LIMITING:",
-            "   - Implement rate limiting on sensitive endpoint",
-            "   - Use progressive delays for repeated failures",
-            "   - Consider IP-based blocking for persistent attackers",
-            "",
-            "4. FILE ACCESS CONTROLS:",
-            "   - Implement strict file access controls",
-            "   - Use whitelist-based file serving",
-            "   - Never trust user input for file paths",
-            "",
-            "5. LOGGING & MONITORING:",
-            "   - Log all security-relevant events",
-            "   - Implement real-time attack detection",
-            "   - Set up alerting for suspicious activities",
-            "",
-            "6. WEB APPLICATION FIREWALL (WAF):",
-            "   - Deploy WAF to filter malicious requests",
-            "   - Configure rules for common attack patterns",
-            "   - Regularly update WAF signatures"
+            ""
+            
         ]
         
         for rec in recommendations:
@@ -336,15 +312,10 @@ def main():
         json.dump(tester.results, f, indent=2)
     
     print(f"\n📄 Test results saved to: test_results.json")
-    print(f"📄 Security logs available at: security_log.txt")
+    print(f"📄 Security logs  available at: security_log.txt")
     
     print("\n✅ Security testing and defense demonstration complete!")
-    print("\nKey Takeaways:")
-    print("- Wfuzz is powerful for discovering vulnerabilities")
-    print("- Proper input validation prevents most attacks")
-    print("- Rate limiting stops brute force attacks")
-    print("- Logging helps detect and respond to threats")
-    print("- Defense in depth is essential for security")
+
 
 if __name__ == "__main__":
     main()
