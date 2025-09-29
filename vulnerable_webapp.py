@@ -59,7 +59,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Rate limiting decorator
+# Rate limiting decorator for Brute force
 def rate_limit(max_requests=10, window_seconds=60):
     def decorator(f):
         @wraps(f)
@@ -75,7 +75,7 @@ def rate_limit(max_requests=10, window_seconds=60):
                 else:
                     del blocked_ips[client_ip]
             
-            # Initialize or clean old requests
+            # Initialize or clean old requests.
             if client_ip not in request_counts:
                 request_counts[client_ip] = []
             
@@ -97,7 +97,7 @@ def rate_limit(max_requests=10, window_seconds=60):
         return decorated_function
     return decorator
 
-# Vulnerable login endpoint (for demonstration)
+#  SQL Injection Prevention Vulnerable login endpoint (for demonstration)
 @app.route('/vulnerable_login', methods=['GET', 'POST'])
 def vulnerable_login():
     if request.method == 'POST':
@@ -107,7 +107,7 @@ def vulnerable_login():
         # Log login attempt
         logging.info(f"Login attempt for username: {username} from IP: {request.remote_addr}")
         
-        # Vulnerable SQL query (for educational purposes)
+        # Vulnerable SQL query 
         conn = sqlite3.connect('users.db')
         cursor = conn.cursor()
         
@@ -140,7 +140,7 @@ def vulnerable_login():
     </form>
     '''
 
-# Secure login endpoint with countermeasures
+# Secure SQL injection login endpoint with countermeasures
 @app.route('/secure_login', methods=['GET', 'POST'])
 @rate_limit(max_requests=5, window_seconds=300)  # 5 attempts per 5 minutes
 def secure_login():
@@ -217,7 +217,7 @@ def secure_file_access(filename):
     except:
         return 'Error reading file', 500
 
-# Search functionality vulnerable to XSS
+# XSS Search functionality vulnerable 
 @app.route('/search')
 def vulnerable_search():
     query = request.args.get('q', '')
