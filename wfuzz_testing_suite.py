@@ -314,7 +314,7 @@ def main():
     print(f"\n📄 Test results saved to: test_results.json")
     print(f"📄 Security logs available at: security_log.txt")
     
-    print("\n✅ Security testing and defense demonstration complete!")
+    print("\n✅ Security testing  and defense demonstration complete!")
 
 
 if __name__ == "__main__":
