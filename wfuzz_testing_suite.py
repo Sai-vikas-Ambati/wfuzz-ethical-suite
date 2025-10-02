@@ -312,7 +312,7 @@ def main():
         json.dump(tester.results, f, indent=2)
     
     print(f"\n📄 Test results saved to: test_results.json")
-    print(f"📄 Security logs  available at: security_log.txt")
+    print(f"📄 Security logs available at: security_log.txt")
     
     print("\n✅ Security testing and defense demonstration complete!")
 
