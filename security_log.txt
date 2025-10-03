@@ -1,0 +1,1022 @@
+2025-09-10 18:29:04,698 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.112.191:5000
+2025-09-10 18:29:04,698 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-10 18:29:04,701 - INFO -  * Restarting with stat
+2025-09-10 18:29:05,218 - WARNING -  * Debugger is active!
+2025-09-10 18:29:05,227 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 18:29:18,434 - INFO - 127.0.0.1 - - [10/Sep/2025 18:29:18] "GET / HTTP/1.1" 200 -
+2025-09-10 18:29:19,824 - INFO - 127.0.0.1 - - [10/Sep/2025 18:29:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-10 18:29:28,939 - INFO - 127.0.0.1 - - [10/Sep/2025 18:29:28] "GET /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:29:33,533 - INFO - Login attempt for username: dw from IP: 127.0.0.1
+2025-09-10 18:29:33,534 - INFO - Executing query: SELECT * FROM users WHERE username='dw' AND password='dwd'
+2025-09-10 18:29:33,535 - INFO - 127.0.0.1 - - [10/Sep/2025 18:29:33] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:29:36,929 - INFO - 127.0.0.1 - - [10/Sep/2025 18:29:36] "GET /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:25,477 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:25] "GET / HTTP/1.1" 200 -
+2025-09-10 18:30:29,515 - INFO - Login attempt for username: ' OR '1'='1 from IP: 127.0.0.1
+2025-09-10 18:30:29,516 - INFO - Executing query: SELECT * FROM users WHERE username='' OR '1'='1' AND password='test'
+2025-09-10 18:30:29,518 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:29] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:31,564 - INFO - Login attempt for username: ' OR 1=1-- from IP: 127.0.0.1
+2025-09-10 18:30:31,565 - INFO - Executing query: SELECT * FROM users WHERE username='' OR 1=1--' AND password='test'
+2025-09-10 18:30:31,568 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:31] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:33,597 - INFO - Login attempt for username: admin'-- from IP: 127.0.0.1
+2025-09-10 18:30:33,597 - INFO - Executing query: SELECT * FROM users WHERE username='admin'--' AND password='test'
+2025-09-10 18:30:33,598 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:33] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:35,632 - INFO - Login attempt for username: ' UNION SELECT 1,2,3-- from IP: 127.0.0.1
+2025-09-10 18:30:35,633 - INFO - Executing query: SELECT * FROM users WHERE username='' UNION SELECT 1,2,3--' AND password='test'
+2025-09-10 18:30:35,633 - ERROR - Database error: SELECTs to the left and right of UNION do not have the same number of result columns
+2025-09-10 18:30:35,634 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:35] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:37,655 - INFO - Login attempt for username: '; DROP TABLE users;-- from IP: 127.0.0.1
+2025-09-10 18:30:37,655 - INFO - Executing query: SELECT * FROM users WHERE username=''; DROP TABLE users;--' AND password='test'
+2025-09-10 18:30:37,656 - ERROR - Database error: You can only execute one statement at a time.
+2025-09-10 18:30:37,656 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:37] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:41,689 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-10 18:30:41,690 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin'
+2025-09-10 18:30:41,690 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:41] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:43,717 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-10 18:30:43,717 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='password'
+2025-09-10 18:30:43,718 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:43] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:45,754 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-10 18:30:45,755 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='123456'
+2025-09-10 18:30:45,756 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:45] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:47,789 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-10 18:30:47,789 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin123'
+2025-09-10 18:30:47,791 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:47] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:49,824 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-10 18:30:49,825 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='test123'
+2025-09-10 18:30:49,826 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:49] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:51,851 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-10 18:30:51,852 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin'
+2025-09-10 18:30:51,853 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:51] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:53,870 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-10 18:30:53,870 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='password'
+2025-09-10 18:30:53,871 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:53] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:55,912 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-10 18:30:55,913 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='123456'
+2025-09-10 18:30:55,914 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:55] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:57,941 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-10 18:30:57,941 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin123'
+2025-09-10 18:30:57,942 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:57] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:30:59,968 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-10 18:30:59,969 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='test123'
+2025-09-10 18:30:59,971 - INFO - 127.0.0.1 - - [10/Sep/2025 18:30:59] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:00,653 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-10 18:31:00,655 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin123'
+2025-09-10 18:31:00,659 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:00] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:02,011 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:02,012 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin'
+2025-09-10 18:31:02,013 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:02] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:04,026 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:04,028 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='password'
+2025-09-10 18:31:04,030 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:04] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:06,056 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:06,057 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='123456'
+2025-09-10 18:31:06,058 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:06] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:08,091 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:08,092 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin123'
+2025-09-10 18:31:08,094 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:08] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:09,114 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:09] "GET /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:10,123 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:10,125 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='test123'
+2025-09-10 18:31:10,129 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:10] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:12,174 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-10 18:31:12,175 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin'
+2025-09-10 18:31:12,176 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:12] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:14,215 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-10 18:31:14,216 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='password'
+2025-09-10 18:31:14,217 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:14] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:16,265 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-10 18:31:16,266 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='123456'
+2025-09-10 18:31:16,268 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:16] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:18,309 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-10 18:31:18,310 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin123'
+2025-09-10 18:31:18,310 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:18] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:20,344 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-10 18:31:20,345 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='test123'
+2025-09-10 18:31:20,346 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:20] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-10 18:31:24,386 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:24] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-10 18:31:26,431 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:26] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-10 18:31:28,460 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:28] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-10 18:31:30,494 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:30] "[33mGET /files/..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1[0m" 404 -
+2025-09-10 18:31:32,565 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:32] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-10 18:31:38,646 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:39,648 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:39,649 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:39] "POST /secure_login HTTP/1.1" 200 -
+2025-09-10 18:31:41,776 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:42,777 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:42,778 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:42] "POST /secure_login HTTP/1.1" 200 -
+2025-09-10 18:31:44,898 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:45,899 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:45,900 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:45] "POST /secure_login HTTP/1.1" 200 -
+2025-09-10 18:31:48,025 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:49,026 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:49,027 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:49] "POST /secure_login HTTP/1.1" 200 -
+2025-09-10 18:31:51,166 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:52,172 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-10 18:31:52,173 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:52] "POST /secure_login HTTP/1.1" 200 -
+2025-09-10 18:31:54,295 - WARNING - Rate limit exceeded for IP 127.0.0.1. Blocking for 5 minutes.
+2025-09-10 18:31:54,296 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:54] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-10 18:31:56,445 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-10 18:31:56,445 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:56] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-10 18:31:58,582 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-10 18:31:58,583 - INFO - 127.0.0.1 - - [10/Sep/2025 18:31:58] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-10 18:51:35,190 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:35] "[31m[1mGET /admin HTTP/1.1[0m" 403 -
+2025-09-10 18:51:35,199 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:35] "[33mGET /config HTTP/1.1[0m" 404 -
+2025-09-10 18:51:35,203 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:35] "[33mGET /api HTTP/1.1[0m" 404 -
+2025-09-10 18:51:35,210 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:35] "[33mGET /files HTTP/1.1[0m" 404 -
+2025-09-10 18:51:35,214 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:35] "[33mGET /secure HTTP/1.1[0m" 404 -
+2025-09-10 18:51:35,217 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:35] "[33mGET /login HTTP/1.1[0m" 404 -
+2025-09-10 18:51:35,219 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:35] "[33mGET /backup HTTP/1.1[0m" 404 -
+2025-09-10 18:51:35,222 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:35] "[33mGET /test HTTP/1.1[0m" 404 -
+2025-09-10 18:51:59,576 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:59] "[31m[1mGET /admin HTTP/1.1[0m" 403 -
+2025-09-10 18:51:59,577 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:59] "[33mGET /config HTTP/1.1[0m" 404 -
+2025-09-10 18:51:59,578 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:59] "[33mGET /files HTTP/1.1[0m" 404 -
+2025-09-10 18:51:59,580 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:59] "[33mGET /api HTTP/1.1[0m" 404 -
+2025-09-10 18:51:59,582 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:59] "[33mGET /test HTTP/1.1[0m" 404 -
+2025-09-10 18:51:59,587 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:59] "[33mGET /login HTTP/1.1[0m" 404 -
+2025-09-10 18:51:59,590 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:59] "[33mGET /backup HTTP/1.1[0m" 404 -
+2025-09-10 18:51:59,594 - INFO - 127.0.0.1 - - [10/Sep/2025 18:51:59] "[33mGET /secure HTTP/1.1[0m" 404 -
+2025-09-10 22:36:09,737 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:36:10,311 - INFO -  * Restarting with stat
+2025-09-10 22:36:11,760 - WARNING -  * Debugger is active!
+2025-09-10 22:36:11,766 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:39:34,597 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:39:34,695 - INFO -  * Restarting with stat
+2025-09-10 22:39:35,071 - WARNING -  * Debugger is active!
+2025-09-10 22:39:35,075 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:40:55,466 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:40:55,518 - INFO -  * Restarting with stat
+2025-09-10 22:40:55,883 - WARNING -  * Debugger is active!
+2025-09-10 22:40:55,886 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:40:57,910 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:40:57,959 - INFO -  * Restarting with stat
+2025-09-10 22:40:58,275 - WARNING -  * Debugger is active!
+2025-09-10 22:40:58,278 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:40:59,292 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:40:59,329 - INFO -  * Restarting with stat
+2025-09-10 22:40:59,590 - WARNING -  * Debugger is active!
+2025-09-10 22:40:59,591 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:41:07,625 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:41:07,693 - INFO -  * Restarting with stat
+2025-09-10 22:41:08,010 - WARNING -  * Debugger is active!
+2025-09-10 22:41:08,013 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:41:37,138 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:41:37,190 - INFO -  * Restarting with stat
+2025-09-10 22:41:37,548 - WARNING -  * Debugger is active!
+2025-09-10 22:41:37,559 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:41:54,660 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:41:54,780 - INFO -  * Restarting with stat
+2025-09-10 22:41:55,076 - WARNING -  * Debugger is active!
+2025-09-10 22:41:55,079 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:42:09,145 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-10 22:42:09,232 - INFO -  * Restarting with stat
+2025-09-10 22:42:09,684 - WARNING -  * Debugger is active!
+2025-09-10 22:42:09,686 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:42:28,788 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:42:28,906 - INFO -  * Restarting with stat
+2025-09-10 22:42:29,276 - WARNING -  * Debugger is active!
+2025-09-10 22:42:29,279 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:42:44,331 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:42:44,392 - INFO -  * Restarting with stat
+2025-09-10 22:42:44,674 - WARNING -  * Debugger is active!
+2025-09-10 22:42:44,676 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:42:45,690 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:42:45,749 - INFO -  * Restarting with stat
+2025-09-10 22:42:46,032 - WARNING -  * Debugger is active!
+2025-09-10 22:42:46,034 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:42:53,063 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:42:53,100 - INFO -  * Restarting with stat
+2025-09-10 22:42:53,368 - WARNING -  * Debugger is active!
+2025-09-10 22:42:53,370 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:42:58,393 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:42:58,424 - INFO -  * Restarting with stat
+2025-09-10 22:42:58,700 - WARNING -  * Debugger is active!
+2025-09-10 22:42:58,702 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:43:00,719 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:43:00,757 - INFO -  * Restarting with stat
+2025-09-10 22:43:01,006 - WARNING -  * Debugger is active!
+2025-09-10 22:43:01,010 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:43:03,025 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:43:03,060 - INFO -  * Restarting with stat
+2025-09-10 22:43:03,308 - WARNING -  * Debugger is active!
+2025-09-10 22:43:03,310 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:43:07,334 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:43:07,379 - INFO -  * Restarting with stat
+2025-09-10 22:43:07,751 - WARNING -  * Debugger is active!
+2025-09-10 22:43:07,754 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:43:09,773 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:43:09,827 - INFO -  * Restarting with stat
+2025-09-10 22:43:10,227 - WARNING -  * Debugger is active!
+2025-09-10 22:43:10,229 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:43:36,401 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:43:36,451 - INFO -  * Restarting with stat
+2025-09-10 22:43:36,811 - WARNING -  * Debugger is active!
+2025-09-10 22:43:36,815 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:43:45,864 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-10 22:43:45,915 - INFO -  * Restarting with stat
+2025-09-10 22:43:46,237 - WARNING -  * Debugger is active!
+2025-09-10 22:43:46,240 - INFO -  * Debugger PIN: 131-549-089
+2025-09-10 22:46:07,204 - INFO - 127.0.0.1 - - [10/Sep/2025 22:46:07] "[33mGET /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:23:30,763 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.112.191:5000
+2025-09-13 08:23:30,764 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-13 08:23:30,765 - INFO -  * Restarting with stat
+2025-09-13 08:23:31,077 - WARNING -  * Debugger is active!
+2025-09-13 08:23:31,124 - INFO -  * Debugger PIN: 136-697-523
+2025-09-13 08:23:35,290 - INFO - 127.0.0.1 - - [13/Sep/2025 08:23:35] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-13 08:23:36,512 - INFO - 127.0.0.1 - - [13/Sep/2025 08:23:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-13 08:23:50,014 - INFO - 127.0.0.1 - - [13/Sep/2025 08:23:50] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-13 08:26:22,830 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:22] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-13 08:26:26,888 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:26] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:28,936 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:28] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:30,542 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:30] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-13 08:26:30,972 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:30] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:33,029 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:33] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:35,077 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:35] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:39,130 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:39] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:41,184 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:41] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:43,217 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:43] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:45,250 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:45] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:45,870 - ERROR - 10.12.112.191 - - [13/Sep/2025 08:26:45] code 400, message Bad request version ('\x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sÊÊ\x00\x00\x00')
+2025-09-13 08:26:45,872 - INFO - 10.12.112.191 - - [13/Sep/2025 08:26:45] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\x8a\x11ôü\x93w¹l\x12dè\x8bp\x8f\\\x7f\x92\x8cµ\x1a\x17µ\x0ca\x9dEx¹Á\x98ÚÉ W\x0ez\x0cõ_ø§\x16ãJTå%¾®aDÓë?LÀg_\x95¬,\x8d\x91u/\x00 \x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sÊÊ\x00\x00\x00[0m" 400 -
+2025-09-13 08:26:45,884 - ERROR - 10.12.112.191 - - [13/Sep/2025 08:26:45] code 400, message Bad request version ('\x81\x17Òj³§Ý3\x94Ã6')
+2025-09-13 08:26:45,885 - INFO - 10.12.112.191 - - [13/Sep/2025 08:26:45] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03ä\x04Þ]çÑ\x86ÊÆö8\x97þçø'>àµÂç\x03Ó\x07Ò÷ÀSîb\x8e\x0f Í£87 ¦\x82ßCþËð\x95\x0d\x07Õ>\\zDÜ4éâA\x9eÚ\x07d\x9d+H\x00 ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06s**\x00\x00þ\x0d\x00ú\x00\x00\x01\x00\x01É\x00 \x81\x17Òj³§Ý3\x94Ã6[0m" 400 -
+2025-09-13 08:26:47,297 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:47] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:48,130 - INFO - 10.12.112.191 - - [13/Sep/2025 08:26:48] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-13 08:26:49,245 - INFO - 10.12.112.191 - - [13/Sep/2025 08:26:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-13 08:26:49,334 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:49] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:51,400 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:51] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:53,444 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:53] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:55,484 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:55] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:57,524 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:57] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:26:59,562 - INFO - 127.0.0.1 - - [13/Sep/2025 08:26:59] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:01,628 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:01] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:03,718 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:03] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:05,773 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:05] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:07,821 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:07] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:09,876 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:09] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:11,915 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:11] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:13,957 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:13] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:15,995 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:15] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:18,036 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:18] "[33mPOST /vulnerable_login HTTP/1.1[0m" 404 -
+2025-09-13 08:27:22,090 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:22] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 08:27:24,123 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:24] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 08:27:26,175 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:26] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 08:27:28,224 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:28] "[33mGET /files/..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1[0m" 404 -
+2025-09-13 08:27:30,251 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:30] "[33mGET /files/sensitive_config.txt HTTP/1.1[0m" 404 -
+2025-09-13 08:27:31,886 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-13 08:27:32,164 - INFO -  * Restarting with stat
+2025-09-13 08:27:32,717 - WARNING -  * Debugger is active!
+2025-09-13 08:27:32,725 - INFO -  * Debugger PIN: 136-697-523
+2025-09-13 08:27:42,441 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.112.191:5000
+2025-09-13 08:27:42,441 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-13 08:27:42,443 - INFO -  * Restarting with stat
+2025-09-13 08:27:42,689 - WARNING -  * Debugger is active!
+2025-09-13 08:27:42,692 - INFO -  * Debugger PIN: 136-697-523
+2025-09-13 08:27:42,953 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:27:43,955 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:27:43,957 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:43] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 08:27:46,105 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:27:46,333 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:46] "GET / HTTP/1.1" 200 -
+2025-09-13 08:27:47,107 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:27:47,107 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:47] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 08:27:49,252 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:27:50,253 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:27:50,254 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:50] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 08:27:52,395 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:27:53,397 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:27:53,397 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:53] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 08:27:59,685 - INFO - 127.0.0.1 - - [13/Sep/2025 08:27:59] "GET / HTTP/1.1" 200 -
+2025-09-13 08:28:03,744 - INFO - Login attempt for username: ' OR '1'='1 from IP: 127.0.0.1
+2025-09-13 08:28:03,745 - INFO - Executing query: SELECT * FROM users WHERE username='' OR '1'='1' AND password='test'
+2025-09-13 08:28:03,746 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:03] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:05,765 - INFO - Login attempt for username: ' OR 1=1-- from IP: 127.0.0.1
+2025-09-13 08:28:05,768 - INFO - Executing query: SELECT * FROM users WHERE username='' OR 1=1--' AND password='test'
+2025-09-13 08:28:05,771 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:05] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:07,814 - INFO - Login attempt for username: admin'-- from IP: 127.0.0.1
+2025-09-13 08:28:07,816 - INFO - Executing query: SELECT * FROM users WHERE username='admin'--' AND password='test'
+2025-09-13 08:28:07,817 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:07] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:09,866 - INFO - Login attempt for username: ' UNION SELECT 1,2,3-- from IP: 127.0.0.1
+2025-09-13 08:28:09,867 - INFO - Executing query: SELECT * FROM users WHERE username='' UNION SELECT 1,2,3--' AND password='test'
+2025-09-13 08:28:09,870 - ERROR - Database error: SELECTs to the left and right of UNION do not have the same number of result columns
+2025-09-13 08:28:09,870 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:09] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:11,912 - INFO - Login attempt for username: '; DROP TABLE users;-- from IP: 127.0.0.1
+2025-09-13 08:28:11,913 - INFO - Executing query: SELECT * FROM users WHERE username=''; DROP TABLE users;--' AND password='test'
+2025-09-13 08:28:11,913 - ERROR - Database error: You can only execute one statement at a time.
+2025-09-13 08:28:11,913 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:11] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:15,968 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 08:28:15,969 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin'
+2025-09-13 08:28:15,970 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:15] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:18,016 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 08:28:18,017 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='password'
+2025-09-13 08:28:18,018 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:18] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:20,072 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 08:28:20,073 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='123456'
+2025-09-13 08:28:20,074 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:20] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:22,102 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 08:28:22,102 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin123'
+2025-09-13 08:28:22,104 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:22] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:24,141 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 08:28:24,142 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='test123'
+2025-09-13 08:28:24,142 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:24] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:26,191 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 08:28:26,192 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin'
+2025-09-13 08:28:26,194 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:26] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:28,254 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 08:28:28,255 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='password'
+2025-09-13 08:28:28,256 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:28] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:30,282 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 08:28:30,283 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='123456'
+2025-09-13 08:28:30,284 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:30] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:32,335 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 08:28:32,336 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin123'
+2025-09-13 08:28:32,338 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:32] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:34,371 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 08:28:34,372 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='test123'
+2025-09-13 08:28:34,374 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:34] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:36,419 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:28:36,420 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin'
+2025-09-13 08:28:36,422 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:36] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:38,471 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:28:38,474 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='password'
+2025-09-13 08:28:38,476 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:38] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:40,534 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:28:40,537 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='123456'
+2025-09-13 08:28:40,539 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:40] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:42,602 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:28:42,604 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin123'
+2025-09-13 08:28:42,606 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:42] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:44,638 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:28:44,640 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='test123'
+2025-09-13 08:28:44,642 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:44] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:46,680 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 08:28:46,681 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin'
+2025-09-13 08:28:46,682 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:46] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:48,742 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 08:28:48,743 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='password'
+2025-09-13 08:28:48,744 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:48] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:50,782 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 08:28:50,785 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='123456'
+2025-09-13 08:28:50,787 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:50] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:52,834 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 08:28:52,837 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin123'
+2025-09-13 08:28:52,838 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:52] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:54,871 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 08:28:54,874 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='test123'
+2025-09-13 08:28:54,875 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:54] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 08:28:58,974 - INFO - 127.0.0.1 - - [13/Sep/2025 08:28:58] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 08:29:01,004 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:01] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 08:29:03,044 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:03] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 08:29:05,078 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:05] "[33mGET /files/..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1[0m" 404 -
+2025-09-13 08:29:07,136 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:07] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-13 08:29:13,207 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:29:14,210 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 08:29:14,211 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:14] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 08:29:16,357 - WARNING - Rate limit exceeded for IP 127.0.0.1. Blocking for 5 minutes.
+2025-09-13 08:29:16,359 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:16] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 08:29:18,510 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 08:29:18,512 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:18] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 08:29:20,670 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 08:29:20,672 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:20] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 08:29:22,823 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 08:29:22,824 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:22] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 08:29:24,963 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 08:29:24,964 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:24] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 08:29:27,110 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 08:29:27,110 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:27] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 08:29:29,255 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 08:29:29,255 - INFO - 127.0.0.1 - - [13/Sep/2025 08:29:29] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 09:05:24,319 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.112.191:5000
+2025-09-13 09:05:24,320 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-13 09:05:24,322 - INFO -  * Restarting with stat
+2025-09-13 09:05:24,748 - WARNING -  * Debugger is active!
+2025-09-13 09:05:24,757 - INFO -  * Debugger PIN: 136-697-523
+2025-09-13 09:05:31,480 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:31] "GET / HTTP/1.1" 200 -
+2025-09-13 09:05:35,545 - INFO - Login attempt for username: ' OR '1'='1 from IP: 127.0.0.1
+2025-09-13 09:05:35,546 - INFO - Executing query: SELECT * FROM users WHERE username='' OR '1'='1' AND password='test'
+2025-09-13 09:05:35,547 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:35] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:37,595 - INFO - Login attempt for username: ' OR 1=1-- from IP: 127.0.0.1
+2025-09-13 09:05:37,596 - INFO - Executing query: SELECT * FROM users WHERE username='' OR 1=1--' AND password='test'
+2025-09-13 09:05:37,634 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:37] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:39,678 - INFO - Login attempt for username: admin'-- from IP: 127.0.0.1
+2025-09-13 09:05:39,679 - INFO - Executing query: SELECT * FROM users WHERE username='admin'--' AND password='test'
+2025-09-13 09:05:39,680 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:39] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:41,715 - INFO - Login attempt for username: ' UNION SELECT 1,2,3-- from IP: 127.0.0.1
+2025-09-13 09:05:41,716 - INFO - Executing query: SELECT * FROM users WHERE username='' UNION SELECT 1,2,3--' AND password='test'
+2025-09-13 09:05:41,717 - ERROR - Database error: SELECTs to the left and right of UNION do not have the same number of result columns
+2025-09-13 09:05:41,717 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:41] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:43,752 - INFO - Login attempt for username: '; DROP TABLE users;-- from IP: 127.0.0.1
+2025-09-13 09:05:43,753 - INFO - Executing query: SELECT * FROM users WHERE username=''; DROP TABLE users;--' AND password='test'
+2025-09-13 09:05:43,754 - ERROR - Database error: You can only execute one statement at a time.
+2025-09-13 09:05:43,755 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:43] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:47,786 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 09:05:47,788 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin'
+2025-09-13 09:05:47,789 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:47] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:49,835 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 09:05:49,836 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='password'
+2025-09-13 09:05:49,836 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:49] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:51,882 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 09:05:51,883 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='123456'
+2025-09-13 09:05:51,884 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:51] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:53,912 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 09:05:53,913 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin123'
+2025-09-13 09:05:53,914 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:53] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:55,962 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-13 09:05:55,963 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='test123'
+2025-09-13 09:05:55,963 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:55] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:05:57,998 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 09:05:57,999 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin'
+2025-09-13 09:05:57,999 - INFO - 127.0.0.1 - - [13/Sep/2025 09:05:57] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:00,036 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 09:06:00,037 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='password'
+2025-09-13 09:06:00,038 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:00] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:02,079 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 09:06:02,081 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='123456'
+2025-09-13 09:06:02,082 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:02] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:04,120 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 09:06:04,122 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin123'
+2025-09-13 09:06:04,123 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:04] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:06,159 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-13 09:06:06,159 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='test123'
+2025-09-13 09:06:06,160 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:06] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:08,205 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:08,206 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin'
+2025-09-13 09:06:08,209 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:08] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:10,247 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:10,248 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='password'
+2025-09-13 09:06:10,250 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:10] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:12,304 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:12,305 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='123456'
+2025-09-13 09:06:12,307 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:12] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:14,336 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:14,337 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin123'
+2025-09-13 09:06:14,338 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:14] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:16,395 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:16,396 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='test123'
+2025-09-13 09:06:16,399 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:16] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:18,447 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 09:06:18,449 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin'
+2025-09-13 09:06:18,450 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:18] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:20,493 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 09:06:20,494 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='password'
+2025-09-13 09:06:20,494 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:20] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:22,522 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 09:06:22,523 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='123456'
+2025-09-13 09:06:22,524 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:22] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:24,570 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 09:06:24,571 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin123'
+2025-09-13 09:06:24,572 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:24] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:26,622 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-13 09:06:26,623 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='test123'
+2025-09-13 09:06:26,624 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:26] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:06:30,665 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:30] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 09:06:32,713 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:32] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 09:06:34,766 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:34] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-13 09:06:36,809 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:36] "[33mGET /files/..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1[0m" 404 -
+2025-09-13 09:06:38,843 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:38] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-13 09:06:44,929 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:45,931 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:45,932 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:45] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 09:06:48,076 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:49,078 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:49,080 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:49] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 09:06:51,236 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:52,238 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:52,239 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:52] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 09:06:54,399 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:55,401 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:55,402 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:55] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 09:06:57,547 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:58,548 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-13 09:06:58,549 - INFO - 127.0.0.1 - - [13/Sep/2025 09:06:58] "POST /secure_login HTTP/1.1" 200 -
+2025-09-13 09:07:00,697 - WARNING - Rate limit exceeded for IP 127.0.0.1. Blocking for 5 minutes.
+2025-09-13 09:07:00,698 - INFO - 127.0.0.1 - - [13/Sep/2025 09:07:00] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 09:07:02,863 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 09:07:02,864 - INFO - 127.0.0.1 - - [13/Sep/2025 09:07:02] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 09:07:05,018 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 09:07:05,019 - INFO - 127.0.0.1 - - [13/Sep/2025 09:07:05] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 09:07:08,893 - INFO - 127.0.0.1 - - [13/Sep/2025 09:07:08] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-13 09:07:14,854 - INFO - 127.0.0.1 - - [13/Sep/2025 09:07:14] "GET /secure_files/readme.txt HTTP/1.1" 200 -
+2025-09-13 09:07:18,632 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-13 09:07:18,634 - INFO - 127.0.0.1 - - [13/Sep/2025 09:07:18] "[31m[1mGET /secure_login HTTP/1.1[0m" 429 -
+2025-09-13 09:07:21,739 - INFO - 127.0.0.1 - - [13/Sep/2025 09:07:21] "GET /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:07:28,047 - INFO - Login attempt for username: admin  from IP: 127.0.0.1
+2025-09-13 09:07:28,052 - INFO - Executing query: SELECT * FROM users WHERE username='admin ' AND password='admin123'
+2025-09-13 09:07:28,056 - INFO - 127.0.0.1 - - [13/Sep/2025 09:07:28] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-13 09:08:29,381 - INFO - 127.0.0.1 - - [13/Sep/2025 09:08:29] "GET /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:33:04,746 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.12.112.191:5000
+2025-09-23 10:33:04,747 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-23 10:33:04,749 - INFO -  * Restarting with stat
+2025-09-23 10:33:05,269 - WARNING -  * Debugger is active!
+2025-09-23 10:33:05,281 - INFO -  * Debugger PIN: 136-697-523
+2025-09-23 10:33:11,051 - INFO - 127.0.0.1 - - [23/Sep/2025 10:33:11] "GET / HTTP/1.1" 200 -
+2025-09-23 10:33:14,630 - INFO - 127.0.0.1 - - [23/Sep/2025 10:33:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-23 10:33:17,120 - INFO - 127.0.0.1 - - [23/Sep/2025 10:33:17] "GET / HTTP/1.1" 200 -
+2025-09-23 10:37:35,061 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:35] "GET / HTTP/1.1" 200 -
+2025-09-23 10:37:39,144 - INFO - Login attempt for username: ' OR '1'='1 from IP: 127.0.0.1
+2025-09-23 10:37:39,158 - INFO - Executing query: SELECT * FROM users WHERE username='' OR '1'='1' AND password='test'
+2025-09-23 10:37:39,165 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:39] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:41,196 - INFO - Login attempt for username: ' OR 1=1-- from IP: 127.0.0.1
+2025-09-23 10:37:41,196 - INFO - Executing query: SELECT * FROM users WHERE username='' OR 1=1--' AND password='test'
+2025-09-23 10:37:41,206 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:41] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:43,236 - INFO - Login attempt for username: admin'-- from IP: 127.0.0.1
+2025-09-23 10:37:43,237 - INFO - Executing query: SELECT * FROM users WHERE username='admin'--' AND password='test'
+2025-09-23 10:37:43,240 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:43] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:45,282 - INFO - Login attempt for username: ' UNION SELECT 1,2,3-- from IP: 127.0.0.1
+2025-09-23 10:37:45,284 - INFO - Executing query: SELECT * FROM users WHERE username='' UNION SELECT 1,2,3--' AND password='test'
+2025-09-23 10:37:45,287 - ERROR - Database error: SELECTs to the left and right of UNION do not have the same number of result columns
+2025-09-23 10:37:45,287 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:45] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:47,320 - INFO - Login attempt for username: '; DROP TABLE users;-- from IP: 127.0.0.1
+2025-09-23 10:37:47,321 - INFO - Executing query: SELECT * FROM users WHERE username=''; DROP TABLE users;--' AND password='test'
+2025-09-23 10:37:47,322 - ERROR - Database error: You can only execute one statement at a time.
+2025-09-23 10:37:47,323 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:47] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:51,378 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-23 10:37:51,380 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin'
+2025-09-23 10:37:51,381 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:51] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:53,409 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-23 10:37:53,410 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='password'
+2025-09-23 10:37:53,412 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:53] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:55,443 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-23 10:37:55,444 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='123456'
+2025-09-23 10:37:55,445 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:55] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:57,466 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-23 10:37:57,467 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin123'
+2025-09-23 10:37:57,469 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:57] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:37:59,499 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-23 10:37:59,501 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='test123'
+2025-09-23 10:37:59,502 - INFO - 127.0.0.1 - - [23/Sep/2025 10:37:59] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:01,528 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-23 10:38:01,529 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin'
+2025-09-23 10:38:01,531 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:01] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:03,572 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-23 10:38:03,574 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='password'
+2025-09-23 10:38:03,576 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:03] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:05,599 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-23 10:38:05,600 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='123456'
+2025-09-23 10:38:05,602 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:05] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:07,632 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-23 10:38:07,634 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin123'
+2025-09-23 10:38:07,635 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:07] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:09,680 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-23 10:38:09,682 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='test123'
+2025-09-23 10:38:09,683 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:09] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:11,723 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:11,725 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin'
+2025-09-23 10:38:11,727 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:11] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:13,768 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:13,769 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='password'
+2025-09-23 10:38:13,771 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:13] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:15,814 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:15,815 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='123456'
+2025-09-23 10:38:15,816 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:15] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:17,844 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:17,845 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin123'
+2025-09-23 10:38:17,847 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:17] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:19,896 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:19,898 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='test123'
+2025-09-23 10:38:19,900 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:19] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:21,942 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-23 10:38:21,942 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin'
+2025-09-23 10:38:21,943 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:21] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:23,971 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-23 10:38:23,972 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='password'
+2025-09-23 10:38:23,973 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:23] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:26,007 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-23 10:38:26,007 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='123456'
+2025-09-23 10:38:26,008 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:26] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:28,048 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-23 10:38:28,050 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin123'
+2025-09-23 10:38:28,052 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:28] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:30,084 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-23 10:38:30,086 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='test123'
+2025-09-23 10:38:30,087 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:30] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-23 10:38:34,129 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:34] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-23 10:38:36,160 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:36] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-23 10:38:38,202 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:38] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-23 10:38:40,250 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:40] "[33mGET /files/..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1[0m" 404 -
+2025-09-23 10:38:42,333 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:42] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-23 10:38:48,410 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:49,413 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:49,414 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:49] "POST /secure_login HTTP/1.1" 200 -
+2025-09-23 10:38:51,542 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:52,544 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:52,545 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:52] "POST /secure_login HTTP/1.1" 200 -
+2025-09-23 10:38:54,666 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:55,667 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:55,667 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:55] "POST /secure_login HTTP/1.1" 200 -
+2025-09-23 10:38:57,805 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:58,807 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:38:58,808 - INFO - 127.0.0.1 - - [23/Sep/2025 10:38:58] "POST /secure_login HTTP/1.1" 200 -
+2025-09-23 10:39:00,951 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:39:01,953 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-23 10:39:01,954 - INFO - 127.0.0.1 - - [23/Sep/2025 10:39:01] "POST /secure_login HTTP/1.1" 200 -
+2025-09-23 10:39:04,082 - WARNING - Rate limit exceeded for IP 127.0.0.1. Blocking for 5 minutes.
+2025-09-23 10:39:04,083 - INFO - 127.0.0.1 - - [23/Sep/2025 10:39:04] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-23 10:39:06,215 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-23 10:39:06,216 - INFO - 127.0.0.1 - - [23/Sep/2025 10:39:06] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-23 10:39:08,350 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-23 10:39:08,350 - INFO - 127.0.0.1 - - [23/Sep/2025 10:39:08] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-23 10:42:21,351 - INFO - 127.0.0.1 - - [23/Sep/2025 10:42:21] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-23 10:42:27,824 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-23 10:42:27,827 - INFO - 127.0.0.1 - - [23/Sep/2025 10:42:27] "[31m[1mGET /secure_login HTTP/1.1[0m" 429 -
+2025-09-23 10:42:31,666 - INFO - 127.0.0.1 - - [23/Sep/2025 10:42:31] "GET /secure_files/readme.txt HTTP/1.1" 200 -
+2025-09-23 10:42:37,006 - INFO - 127.0.0.1 - - [23/Sep/2025 10:42:37] "GET /secure_search?q=test HTTP/1.1" 200 -
+2025-09-23 10:42:41,107 - INFO - 127.0.0.1 - - [23/Sep/2025 10:42:41] "GET /search?q=<script>alert('XSS')</script> HTTP/1.1" 200 -
+2025-09-23 10:42:47,243 - INFO - 127.0.0.1 - - [23/Sep/2025 10:42:47] "GET /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:48:02,432 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.131.68.111:5000
+2025-09-24 08:48:02,433 - INFO - [33mPress CTRL+C to quit[0m
+2025-09-24 08:48:02,438 - INFO -  * Restarting with stat
+2025-09-24 08:48:02,819 - WARNING -  * Debugger is active!
+2025-09-24 08:48:02,836 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 08:48:07,878 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:07] "GET / HTTP/1.1" 200 -
+2025-09-24 08:48:07,880 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:07] "GET / HTTP/1.1" 200 -
+2025-09-24 08:48:10,641 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-24 08:48:43,872 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:43] "GET / HTTP/1.1" 200 -
+2025-09-24 08:48:47,926 - INFO - Login attempt for username: ' OR '1'='1 from IP: 127.0.0.1
+2025-09-24 08:48:47,927 - INFO - Executing query: SELECT * FROM users WHERE username='' OR '1'='1' AND password='test'
+2025-09-24 08:48:47,930 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:47] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:48:49,990 - INFO - Login attempt for username: ' OR 1=1-- from IP: 127.0.0.1
+2025-09-24 08:48:49,991 - INFO - Executing query: SELECT * FROM users WHERE username='' OR 1=1--' AND password='test'
+2025-09-24 08:48:49,995 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:49] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:48:52,030 - INFO - Login attempt for username: admin'-- from IP: 127.0.0.1
+2025-09-24 08:48:52,030 - INFO - Executing query: SELECT * FROM users WHERE username='admin'--' AND password='test'
+2025-09-24 08:48:52,033 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:52] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:48:54,085 - INFO - Login attempt for username: ' UNION SELECT 1,2,3-- from IP: 127.0.0.1
+2025-09-24 08:48:54,086 - INFO - Executing query: SELECT * FROM users WHERE username='' UNION SELECT 1,2,3--' AND password='test'
+2025-09-24 08:48:54,087 - ERROR - Database error: SELECTs to the left and right of UNION do not have the same number of result columns
+2025-09-24 08:48:54,088 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:54] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:48:56,128 - INFO - Login attempt for username: '; DROP TABLE users;-- from IP: 127.0.0.1
+2025-09-24 08:48:56,129 - INFO - Executing query: SELECT * FROM users WHERE username=''; DROP TABLE users;--' AND password='test'
+2025-09-24 08:48:56,130 - ERROR - Database error: You can only execute one statement at a time.
+2025-09-24 08:48:56,131 - INFO - 127.0.0.1 - - [24/Sep/2025 08:48:56] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:00,180 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:49:00,181 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin'
+2025-09-24 08:49:00,182 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:00] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:02,214 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:49:02,215 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='password'
+2025-09-24 08:49:02,217 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:02] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:04,263 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:49:04,264 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='123456'
+2025-09-24 08:49:04,265 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:04] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:06,311 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:49:06,312 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin123'
+2025-09-24 08:49:06,313 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:06] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:08,353 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:49:08,354 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='test123'
+2025-09-24 08:49:08,355 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:08] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:10,400 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:49:10,402 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin'
+2025-09-24 08:49:10,403 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:10] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:12,439 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:49:12,441 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='password'
+2025-09-24 08:49:12,442 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:12] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:14,484 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:49:14,485 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='123456'
+2025-09-24 08:49:14,486 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:14] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:16,530 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:49:16,531 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin123'
+2025-09-24 08:49:16,533 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:16] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:18,582 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:49:18,583 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='test123'
+2025-09-24 08:49:18,585 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:18] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:20,625 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:49:20,626 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin'
+2025-09-24 08:49:20,627 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:20] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:22,664 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:49:22,665 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='password'
+2025-09-24 08:49:22,667 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:22] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:24,722 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:49:24,723 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='123456'
+2025-09-24 08:49:24,725 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:24] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:26,782 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:49:26,783 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin123'
+2025-09-24 08:49:26,784 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:26] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:28,843 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:49:28,845 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='test123'
+2025-09-24 08:49:28,847 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:28] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:30,904 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:49:30,905 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin'
+2025-09-24 08:49:30,907 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:30] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:32,955 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:49:32,956 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='password'
+2025-09-24 08:49:32,957 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:32] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:35,026 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:49:35,027 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='123456'
+2025-09-24 08:49:35,028 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:35] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:37,064 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:49:37,065 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin123'
+2025-09-24 08:49:37,067 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:37] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:39,114 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:49:39,116 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='test123'
+2025-09-24 08:49:39,117 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:39] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:49:43,173 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:43] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 08:49:45,226 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:45] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 08:49:47,263 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:47] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 08:49:49,300 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:49] "[33mGET /files/..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1[0m" 404 -
+2025-09-24 08:49:51,379 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:51] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-24 08:49:57,546 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:49:58,550 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:49:58,552 - INFO - 127.0.0.1 - - [24/Sep/2025 08:49:58] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:50:00,692 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:50:01,693 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:50:01,695 - INFO - 127.0.0.1 - - [24/Sep/2025 08:50:01] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:50:03,844 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:50:04,847 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:50:04,849 - INFO - 127.0.0.1 - - [24/Sep/2025 08:50:04] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:50:07,009 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:50:08,011 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:50:08,016 - INFO - 127.0.0.1 - - [24/Sep/2025 08:50:08] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:50:10,175 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:50:11,177 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:50:11,178 - INFO - 127.0.0.1 - - [24/Sep/2025 08:50:11] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:50:13,330 - WARNING - Rate limit exceeded for IP 127.0.0.1. Blocking for 5 minutes.
+2025-09-24 08:50:13,333 - INFO - 127.0.0.1 - - [24/Sep/2025 08:50:13] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-24 08:50:15,481 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-24 08:50:15,482 - INFO - 127.0.0.1 - - [24/Sep/2025 08:50:15] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-24 08:50:17,643 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-24 08:50:17,644 - INFO - 127.0.0.1 - - [24/Sep/2025 08:50:17] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-24 08:52:54,929 - INFO - 127.0.0.1 - - [24/Sep/2025 08:52:54] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-24 08:54:16,617 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-24 08:54:16,782 - INFO -  * Restarting with stat
+2025-09-24 08:54:17,645 - WARNING -  * Debugger is active!
+2025-09-24 08:54:17,651 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 08:54:35,764 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-24 08:54:35,808 - INFO -  * Restarting with stat
+2025-09-24 08:54:36,205 - WARNING -  * Debugger is active!
+2025-09-24 08:54:36,208 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 08:54:43,262 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-24 08:54:43,326 - INFO -  * Restarting with stat
+2025-09-24 08:54:43,830 - WARNING -  * Debugger is active!
+2025-09-24 08:54:43,833 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 08:54:49,734 - INFO - 127.0.0.1 - - [24/Sep/2025 08:54:49] "GET / HTTP/1.1" 200 -
+2025-09-24 08:54:53,837 - INFO - Login attempt for username: ' OR '1'='1 from IP: 127.0.0.1
+2025-09-24 08:54:53,838 - INFO - Executing query: SELECT * FROM users WHERE username='' OR '1'='1' AND password='test'
+2025-09-24 08:54:53,840 - INFO - 127.0.0.1 - - [24/Sep/2025 08:54:53] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:54:55,900 - INFO - Login attempt for username: ' OR 1=1-- from IP: 127.0.0.1
+2025-09-24 08:54:55,901 - INFO - Executing query: SELECT * FROM users WHERE username='' OR 1=1--' AND password='test'
+2025-09-24 08:54:55,902 - INFO - 127.0.0.1 - - [24/Sep/2025 08:54:55] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:54:57,951 - INFO - Login attempt for username: admin'-- from IP: 127.0.0.1
+2025-09-24 08:54:57,953 - INFO - Executing query: SELECT * FROM users WHERE username='admin'--' AND password='test'
+2025-09-24 08:54:57,954 - INFO - 127.0.0.1 - - [24/Sep/2025 08:54:57] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:00,007 - INFO - Login attempt for username: ' UNION SELECT 1,2,3-- from IP: 127.0.0.1
+2025-09-24 08:55:00,008 - INFO - Executing query: SELECT * FROM users WHERE username='' UNION SELECT 1,2,3--' AND password='test'
+2025-09-24 08:55:00,009 - ERROR - Database error: SELECTs to the left and right of UNION do not have the same number of result columns
+2025-09-24 08:55:00,009 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:00] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:02,059 - INFO - Login attempt for username: '; DROP TABLE users;-- from IP: 127.0.0.1
+2025-09-24 08:55:02,060 - INFO - Executing query: SELECT * FROM users WHERE username=''; DROP TABLE users;--' AND password='test'
+2025-09-24 08:55:02,060 - ERROR - Database error: You can only execute one statement at a time.
+2025-09-24 08:55:02,061 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:02] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:06,097 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:55:06,099 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin'
+2025-09-24 08:55:06,100 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:06] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:08,155 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:55:08,156 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='password'
+2025-09-24 08:55:08,158 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:08] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:10,218 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:55:10,219 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='123456'
+2025-09-24 08:55:10,221 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:10] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:12,269 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:55:12,270 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin123'
+2025-09-24 08:55:12,272 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:12] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:14,318 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 08:55:14,319 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='test123'
+2025-09-24 08:55:14,320 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:14] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:16,360 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:55:16,361 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin'
+2025-09-24 08:55:16,363 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:16] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:18,409 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:55:18,410 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='password'
+2025-09-24 08:55:18,411 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:18] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:20,464 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:55:20,465 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='123456'
+2025-09-24 08:55:20,467 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:20] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:22,524 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:55:22,525 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin123'
+2025-09-24 08:55:22,527 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:22] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:24,600 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 08:55:24,601 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='test123'
+2025-09-24 08:55:24,603 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:24] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:26,668 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:55:26,669 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin'
+2025-09-24 08:55:26,671 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:26] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:28,729 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:55:28,731 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='password'
+2025-09-24 08:55:28,732 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:28] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:30,779 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:55:30,780 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='123456'
+2025-09-24 08:55:30,782 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:30] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:32,842 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:55:32,843 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin123'
+2025-09-24 08:55:32,843 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:32] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:34,892 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:55:34,893 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='test123'
+2025-09-24 08:55:34,895 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:34] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:36,936 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:55:36,936 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin'
+2025-09-24 08:55:36,937 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:36] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:38,981 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:55:38,982 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='password'
+2025-09-24 08:55:38,984 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:38] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:41,036 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:55:41,038 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='123456'
+2025-09-24 08:55:41,039 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:41] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:43,073 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:55:43,074 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin123'
+2025-09-24 08:55:43,076 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:43] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:45,121 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 08:55:45,122 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='test123'
+2025-09-24 08:55:45,123 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:45] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 08:55:49,168 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:49] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 08:55:51,224 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:51] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 08:55:53,272 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:53] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 08:55:55,321 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:55] "[33mGET /files/..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1[0m" 404 -
+2025-09-24 08:55:57,416 - INFO - 127.0.0.1 - - [24/Sep/2025 08:55:57] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-24 08:56:03,543 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:04,545 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:04,557 - INFO - 127.0.0.1 - - [24/Sep/2025 08:56:04] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:56:06,715 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:07,717 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:07,718 - INFO - 127.0.0.1 - - [24/Sep/2025 08:56:07] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:56:09,869 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:10,871 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:10,872 - INFO - 127.0.0.1 - - [24/Sep/2025 08:56:10] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:56:13,024 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:14,026 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:14,027 - INFO - 127.0.0.1 - - [24/Sep/2025 08:56:14] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:56:16,183 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:17,184 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 08:56:17,187 - INFO - 127.0.0.1 - - [24/Sep/2025 08:56:17] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 08:56:19,342 - WARNING - Rate limit exceeded for IP 127.0.0.1. Blocking for 5 minutes.
+2025-09-24 08:56:19,343 - INFO - 127.0.0.1 - - [24/Sep/2025 08:56:19] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-24 08:56:21,501 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-24 08:56:21,502 - INFO - 127.0.0.1 - - [24/Sep/2025 08:56:21] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-24 08:56:23,657 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-24 08:56:23,659 - INFO - 127.0.0.1 - - [24/Sep/2025 08:56:23] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-24 08:57:19,680 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-24 08:57:19,731 - INFO -  * Restarting with stat
+2025-09-24 08:57:20,168 - WARNING -  * Debugger is active!
+2025-09-24 08:57:20,171 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 08:57:21,191 - INFO -  * Detected change in 'D:\\projects\\security_project\\wfuzz_testing_suite.py', reloading
+2025-09-24 08:57:21,235 - INFO -  * Restarting with stat
+2025-09-24 08:57:21,664 - WARNING -  * Debugger is active!
+2025-09-24 08:57:21,667 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:35:47,861 - INFO - 127.0.0.1 - - [24/Sep/2025 09:35:47] "GET / HTTP/1.1" 200 -
+2025-09-24 09:40:55,947 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:40:56,242 - INFO -  * Restarting with stat
+2025-09-24 09:40:57,397 - WARNING -  * Debugger is active!
+2025-09-24 09:40:57,403 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:41:38,686 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:41:38,733 - INFO -  * Restarting with stat
+2025-09-24 09:41:39,191 - WARNING -  * Debugger is active!
+2025-09-24 09:41:39,193 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:41:49,260 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:41:49,302 - INFO -  * Restarting with stat
+2025-09-24 09:41:49,710 - WARNING -  * Debugger is active!
+2025-09-24 09:41:49,712 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:44:32,771 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:44:32,833 - INFO -  * Restarting with stat
+2025-09-24 09:44:33,558 - WARNING -  * Debugger is active!
+2025-09-24 09:44:33,562 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:45:06,858 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:45:06,945 - INFO -  * Restarting with stat
+2025-09-24 09:45:07,556 - WARNING -  * Debugger is active!
+2025-09-24 09:45:07,560 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:45:16,629 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:45:16,678 - INFO -  * Restarting with stat
+2025-09-24 09:45:17,157 - WARNING -  * Debugger is active!
+2025-09-24 09:45:17,159 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:45:21,199 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:45:21,245 - INFO -  * Restarting with stat
+2025-09-24 09:45:21,707 - WARNING -  * Debugger is active!
+2025-09-24 09:45:21,709 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:48:30,923 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:48:31,009 - INFO -  * Restarting with stat
+2025-09-24 09:48:31,669 - WARNING -  * Debugger is active!
+2025-09-24 09:48:31,673 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:48:34,708 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:48:34,770 - INFO -  * Restarting with stat
+2025-09-24 09:48:35,232 - WARNING -  * Debugger is active!
+2025-09-24 09:48:35,239 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 09:49:03,535 - INFO -  * Detected change in 'D:\\projects\\security_project\\vulnerable_webapp.py', reloading
+2025-09-24 09:49:03,616 - INFO -  * Restarting with stat
+2025-09-24 09:49:04,063 - WARNING -  * Debugger is active!
+2025-09-24 09:49:04,066 - INFO -  * Debugger PIN: 136-697-523
+2025-09-24 10:07:15,452 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:15] "GET / HTTP/1.1" 200 -
+2025-09-24 10:07:19,550 - INFO - Login attempt for username: ' OR '1'='1 from IP: 127.0.0.1
+2025-09-24 10:07:19,552 - INFO - Executing query: SELECT * FROM users WHERE username='' OR '1'='1' AND password='test'
+2025-09-24 10:07:19,555 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:19] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:21,597 - INFO - Login attempt for username: ' OR 1=1-- from IP: 127.0.0.1
+2025-09-24 10:07:21,598 - INFO - Executing query: SELECT * FROM users WHERE username='' OR 1=1--' AND password='test'
+2025-09-24 10:07:21,614 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:21] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:23,663 - INFO - Login attempt for username: admin'-- from IP: 127.0.0.1
+2025-09-24 10:07:23,664 - INFO - Executing query: SELECT * FROM users WHERE username='admin'--' AND password='test'
+2025-09-24 10:07:23,665 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:23] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:25,708 - INFO - Login attempt for username: ' UNION SELECT 1,2,3-- from IP: 127.0.0.1
+2025-09-24 10:07:25,709 - INFO - Executing query: SELECT * FROM users WHERE username='' UNION SELECT 1,2,3--' AND password='test'
+2025-09-24 10:07:25,746 - ERROR - Database error: SELECTs to the left and right of UNION do not have the same number of result columns
+2025-09-24 10:07:25,747 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:25] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:27,805 - INFO - Login attempt for username: '; DROP TABLE users;-- from IP: 127.0.0.1
+2025-09-24 10:07:27,806 - INFO - Executing query: SELECT * FROM users WHERE username=''; DROP TABLE users;--' AND password='test'
+2025-09-24 10:07:27,806 - ERROR - Database error: You can only execute one statement at a time.
+2025-09-24 10:07:27,807 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:27] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:31,861 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 10:07:31,862 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin'
+2025-09-24 10:07:31,865 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:31] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:33,903 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 10:07:33,905 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='password'
+2025-09-24 10:07:33,906 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:33] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:35,967 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 10:07:35,967 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='123456'
+2025-09-24 10:07:35,968 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:35] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:38,017 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 10:07:38,053 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='admin123'
+2025-09-24 10:07:38,055 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:38] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:40,114 - INFO - Login attempt for username: admin from IP: 127.0.0.1
+2025-09-24 10:07:40,115 - INFO - Executing query: SELECT * FROM users WHERE username='admin' AND password='test123'
+2025-09-24 10:07:40,117 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:40] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:42,153 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 10:07:42,154 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin'
+2025-09-24 10:07:42,155 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:42] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:44,194 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 10:07:44,195 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='password'
+2025-09-24 10:07:44,196 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:44] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:46,257 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 10:07:46,259 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='123456'
+2025-09-24 10:07:46,260 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:46] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:48,312 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 10:07:48,313 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='admin123'
+2025-09-24 10:07:48,315 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:48] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:50,356 - INFO - Login attempt for username: user from IP: 127.0.0.1
+2025-09-24 10:07:50,357 - INFO - Executing query: SELECT * FROM users WHERE username='user' AND password='test123'
+2025-09-24 10:07:50,358 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:50] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:52,395 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:07:52,395 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin'
+2025-09-24 10:07:52,396 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:52] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:54,432 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:07:54,433 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='password'
+2025-09-24 10:07:54,435 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:54] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:56,491 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:07:56,492 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='123456'
+2025-09-24 10:07:56,494 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:56] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:07:58,526 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:07:58,527 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='admin123'
+2025-09-24 10:07:58,529 - INFO - 127.0.0.1 - - [24/Sep/2025 10:07:58] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:08:00,587 - INFO - Login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:00,588 - INFO - Executing query: SELECT * FROM users WHERE username='test' AND password='test123'
+2025-09-24 10:08:00,625 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:00] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:08:02,673 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 10:08:02,674 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin'
+2025-09-24 10:08:02,675 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:02] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:08:04,725 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 10:08:04,726 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='password'
+2025-09-24 10:08:04,728 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:04] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:08:06,776 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 10:08:06,777 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='123456'
+2025-09-24 10:08:06,778 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:06] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:08:08,832 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 10:08:08,833 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='admin123'
+2025-09-24 10:08:08,834 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:08] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:08:10,880 - INFO - Login attempt for username: guest from IP: 127.0.0.1
+2025-09-24 10:08:10,881 - INFO - Executing query: SELECT * FROM users WHERE username='guest' AND password='test123'
+2025-09-24 10:08:10,882 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:10] "POST /vulnerable_login HTTP/1.1" 200 -
+2025-09-24 10:08:14,947 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:14] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 10:08:16,990 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:16] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 10:08:19,044 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:19] "[33mGET /etc/passwd HTTP/1.1[0m" 404 -
+2025-09-24 10:08:21,132 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:21] "[33mGET /files/..\\windows\\system32\\drivers\\etc\\hosts HTTP/1.1[0m" 404 -
+2025-09-24 10:08:23,226 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:23] "GET /files/sensitive_config.txt HTTP/1.1" 200 -
+2025-09-24 10:08:29,320 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:30,321 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:30,322 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:30] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 10:08:32,478 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:33,479 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:33,481 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:33] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 10:08:35,644 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:36,645 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:36,646 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:36] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 10:08:38,798 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:39,800 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:39,827 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:39] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 10:08:41,992 - INFO - Secure login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:42,994 - WARNING - Failed login attempt for username: test from IP: 127.0.0.1
+2025-09-24 10:08:42,995 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:42] "POST /secure_login HTTP/1.1" 200 -
+2025-09-24 10:08:45,150 - WARNING - Rate limit exceeded for IP 127.0.0.1. Blocking for 5 minutes.
+2025-09-24 10:08:45,152 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:45] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-24 10:08:47,300 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-24 10:08:47,301 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:47] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -
+2025-09-24 10:08:49,440 - WARNING - Blocked IP 127.0.0.1 attempted access
+2025-09-24 10:08:49,441 - INFO - 127.0.0.1 - - [24/Sep/2025 10:08:49] "[31m[1mPOST /secure_login HTTP/1.1[0m" 429 -

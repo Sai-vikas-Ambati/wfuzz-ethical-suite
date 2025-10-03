@@ -156,7 +156,7 @@ def secure_login():
             return jsonify({'status': 'error', 'message': 'Input too long'})
         
         # Log secure login attempt
-        logging.info(f"Secure login attempt  for username: {username} from IP: {request.remote_addr}")
+        logging.info(f"Secure login attempt for  username: {username} from IP: {request.remote_addr}")
         
         # Secure parameterized query
         conn = sqlite3.connect('users.db')
