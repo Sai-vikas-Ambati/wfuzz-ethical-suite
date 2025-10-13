@@ -27,7 +27,7 @@ class SecurityDemoOrchestrator:
         
     def start_webapp(self):
         """Start the vulnerable web application"""
-        print("🚀 Starting vulnerable web application...")
+        print("🚀 Starting  vulnerable web application...")
         try:
             self.webapp_process = subprocess.Popen(
                 ['python', 'vulnerable_webapp.py'],
