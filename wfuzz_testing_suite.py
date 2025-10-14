@@ -165,7 +165,7 @@ class SecurityTester:
         
         print(f"Command: {command}")
         print("This command:")
-        print("- Tests directory traversal payloads")
+        print("- Tests directory  traversal payloads")
         print("- Shows only successful file reads (200 status)")
         print("- Attempts to access system files")
         
@@ -215,7 +215,7 @@ class DefensiveAnalyzer:
             elif '..' in log or 'etc/passwd' in log:
                 directory_traversal_attempts.append(log.strip())
         
-        print(f"\n📊 ATTACK PATTERN ANALYSIS:")
+        print(f"\n ATTACK PATTERN ANALYSIS:")
         print(f"SQL Injection attempts: {len(sql_injection_attempts)}")
         print(f"Brute force attempts: {len(brute_force_attempts)}")
         print(f"Directory traversal attempts: {len(directory_traversal_attempts)}")
@@ -280,7 +280,7 @@ def main():
     analyzer = DefensiveAnalyzer()
     
     # Demonstrate attacks
-    print("\n🗡️  ATTACK DEMONSTRATION PHASE")
+    print("\n  ATTACK DEMONSTRATION PHASE")
     print("=" * 40)
     
     tester.directory_brute_force()
